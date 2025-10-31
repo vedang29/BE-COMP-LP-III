@@ -11,52 +11,43 @@ This tutorial demonstrates how to create a simple Ethereum smart contract to sto
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-contract StudentContract {
-
-    // Structure to store student information
+contract StudentData {
     struct Student {
-        uint id;
+        uint256 id;
         string name;
-        uint age;
+        uint8 age;
+        string course;
     }
 
-    // Array to store multiple students
-    Student[] public students;
+    Student[] private students;
 
-    // Event to log student addition
-    event StudentAdded(uint id, string name, uint age);
+    event StudentAdded(uint256 id, string name, string course);
+    event FallbackCalled(address sender, uint value, string message);
 
-    // Function to add a new student
-    function addStudent(uint _id, string memory _name, uint _age) public {
-        Student memory newStudent = Student({
-            id: _id,
-            name: _name,
-            age: _age
-        });
-        students.push(newStudent);
-        emit StudentAdded(_id, _name, _age);
+    function addStudent(uint256 _id, string memory _name, uint8 _age, string memory _course) public {
+        students.push(Student(_id, _name, _age, _course));
+        emit StudentAdded(_id, _name, _course);
     }
 
-    // Function to get total number of students
-    function getStudentCount() public view returns (uint) {
+    function getStudent(uint256 index) public view returns (uint256, string memory, uint8, string memory) {
+        require(index < students.length, "Invalid index");
+        Student memory s = students[index];
+        return (s.id, s.name, s.age, s.course);
+    }
+
+    function getTotalStudents() public view returns (uint256) {
         return students.length;
     }
 
-    // Function to get student details by index
-    function getStudent(uint index) public view returns (uint, string memory, uint) {
-        require(index < students.length, "Student does not exist");
-        Student memory s = students[index];
-        return (s.id, s.name, s.age);
-    }
-
-    // Fallback function
     fallback() external payable {
-        // Can be used to receive ether or handle unknown function calls
+        emit FallbackCalled(msg.sender, msg.value, "Fallback function triggered!");
     }
 
-    // Receive function to accept Ether directly
-    receive() external payable {}
+    receive() external payable {
+        emit FallbackCalled(msg.sender, msg.value, "Receive function triggered!");
+    }
 }
+
 ```
 
 ---
