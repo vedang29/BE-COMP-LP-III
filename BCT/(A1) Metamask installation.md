@@ -1,4 +1,73 @@
-# MetaMask Installation and Ether Spending Study
+# 🧩 Assignment 1 — MetaMask Setup & Transaction
+
+## Objective
+This assignment will guide you through the process of setting up **MetaMask**, connecting it to a blockchain test network, and performing a basic transaction between two accounts.
+
+---
+
+## 🔧 Steps
+
+### 1. Install MetaMask Extension
+1. Open **Google Chrome**.
+2. Go to the [MetaMask website](https://metamask.io/).
+3. Click **"Download for Chrome"** and install the extension.
+
+---
+
+### 2. Create or Import a Wallet
+1. After installation, open the MetaMask extension.
+2. Choose one of the following options:
+   - **Create a new wallet:** Set a strong password and securely store your Secret Recovery Phrase.
+   - **Import existing wallet:** Use your **Secret Phrase** to log in.
+
+---
+
+### 3. Access the Network Settings
+1. Once logged in, click on your **profile icon** (top-right corner).
+2. Navigate to **Settings → Networks**.
+
+---
+
+### 4. Add a Custom Network
+1. Visit [Chainlist.org](https://chainlist.org/).
+2. Search for and **copy a Chain ID** of your desired network.
+3. Return to MetaMask and click **"Add a custom network"**.
+4. Paste the **Chain ID** and complete the setup.
+
+---
+
+### 5. Get Test Ethereum (Sepolia Faucet)
+1. Go to [Google Cloud Web3 Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
+2. **Copy your wallet address** from MetaMask.
+3. **Paste the address** in the faucet and request test ETH.
+
+---
+
+### 6. Create Another Account
+1. In MetaMask, click your **profile icon** again.
+2. Select **“Create Account”** and name it (e.g., *Account 2*).
+
+---
+
+### 7. Send a Transaction
+1. Switch to **Account 1**.
+2. Click **“Send”**.
+3. Select the **network** (e.g., Sepolia).
+4. Paste the **receiver’s wallet address** (from Account 2).
+5. Enter the **amount** and click **“Send”**.
+
+---
+
+## ✅ Completion
+You have successfully:
+- Installed and configured MetaMask  
+- Connected to a test network  
+- Received faucet ETH  
+- Sent a transaction between two accounts  
+
+---
+
+<!-- # MetaMask Installation and Ether Spending Study
 
 ## Step 1: Install MetaMask
 
@@ -56,4 +125,4 @@
 ## Tips
 - Always use a testnet first to avoid losing real ETH.
 - MetaMask provides detailed transaction history and gas usage.
-
+ -->
