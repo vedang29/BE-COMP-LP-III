@@ -1,6 +1,9 @@
+// PROGRAM - 3
 import java.util.*;
 
-public class FractionalKnapsack { // Main public class must match filename
+public class FractionalKnapsack {
+
+    // Item class
     static class Item {
         int value, weight;
         double ratio;
@@ -12,71 +15,84 @@ public class FractionalKnapsack { // Main public class must match filename
         }
     }
 
+    // Method to solve fractional knapsack
+    public static double fractionalKnapsack(int capacity, Item[] items) {
+        // Sort items by value-to-weight ratio in descending order
+        Arrays.sort(items, (a, b) -> Double.compare(b.ratio, a.ratio));
+
+        double totalValue = 0.0;
+        int remainingCapacity = capacity;
+
+        for (Item item : items) {
+            if (remainingCapacity == 0) break;
+
+            if (item.weight <= remainingCapacity) {
+                totalValue += item.value;
+                remainingCapacity -= item.weight;
+            } else {
+                // Take fraction of the item
+                totalValue += item.ratio * remainingCapacity;
+                remainingCapacity = 0;
+            }
+        }
+
+        return totalValue;
+    }
+
+    // ---------------- MENU ----------------
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Item> items = new ArrayList<>();
-        int choice;
+        int n = 0, capacity = 0;
+        Item[] items = null;
 
         while (true) {
-            System.out.println("\n=== Fractional Knapsack Menu ===");
-            System.out.println("1. Enter items");
-            System.out.println("2. Solve fractional knapsack");
-            System.out.println("3. Exit");
+            System.out.println("\n===== FRACTIONAL KNAPSACK MENU =====");
+            System.out.println("1. Enter number of items & knapsack capacity");
+            System.out.println("2. Enter item values and weights");
+            System.out.println("3. Solve Fractional Knapsack");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
+            int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
-                    items.clear();
                     System.out.print("Enter number of items: ");
-                    int n = sc.nextInt();
-                    for (int i = 0; i < n; i++) {
-                        System.out.print("Item " + (i + 1) + " value: ");
-                        int v = sc.nextInt();
-                        System.out.print("Item " + (i + 1) + " weight: ");
-                        int w = sc.nextInt();
-                        items.add(new Item(v, w));
-                    }
+                    n = sc.nextInt();
+                    System.out.print("Enter knapsack capacity: ");
+                    capacity = sc.nextInt();
+                    items = new Item[n];
                     break;
 
                 case 2:
-                    if (items.isEmpty()) {
-                        System.out.println("Please enter items first!");
+                    if (items == null) {
+                        System.out.println("Enter number of items first (option 1).");
                         break;
                     }
-                    System.out.print("Enter knapsack capacity: ");
-                    int capacity = sc.nextInt();
-
-                    // Sort by value-to-weight ratio
-                    items.sort((a, b) -> Double.compare(b.ratio, a.ratio));
-
-                    double totalValue = 0;
-                    int remaining = capacity;
-                    System.out.println("\nItems taken (value/weight fraction):");
-                    for (Item item : items) {
-                        if (remaining == 0) break;
-                        if (item.weight <= remaining) {
-                            System.out.println(item.value + "/" + item.weight + " -> Full");
-                            totalValue += item.value;
-                            remaining -= item.weight;
-                        } else {
-                            double fraction = (double) remaining / item.weight;
-                            System.out.println(item.value + "/" + item.weight + " -> " + (fraction * 100) + "%");
-                            totalValue += item.value * fraction;
-                            remaining = 0;
-                        }
+                    for (int i = 0; i < n; i++) {
+                        System.out.print("Enter value of item " + (i + 1) + ": ");
+                        int value = sc.nextInt();
+                        System.out.print("Enter weight of item " + (i + 1) + ": ");
+                        int weight = sc.nextInt();
+                        items[i] = new Item(value, weight);
                     }
-
-                    System.out.printf("Maximum total value in knapsack: %.2f\n", totalValue);
                     break;
 
                 case 3:
-                    System.out.println("Exiting program. Goodbye!");
+                    if (items == null) {
+                        System.out.println("Enter items first (option 1 & 2).");
+                        break;
+                    }
+                    double maxProfit = fractionalKnapsack(capacity, items);
+                    System.out.println("Maximum profit = " + maxProfit);
+                    break;
+
+                case 4:
+                    System.out.println("Exiting program...");
                     sc.close();
                     return;
 
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("Invalid choice! Try again.");
             }
         }
     }
