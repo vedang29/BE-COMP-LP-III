@@ -23,21 +23,24 @@ This assignment will guide you through the process of setting up **MetaMask**, c
 ---
 
 ### 3. Access the Network Settings
-1. Once logged in, click on your **profile icon** (top-right corner).
-2. Navigate to **Settings → Networks**.
+1. Once logged in, click on your **Side Bar Icon (Three lines)** (top-right corner).
+2. Navigate to **Networks**.
 
 ---
 
 ### 4. Add a Custom Network
-1. Visit [Chainlist.org](https://chainlist.org/).
-2. Search for and **copy a Chain ID** of your desired network.
+1. Enter Chain ID : **11155111**
+2. After entering Click on **edit the original network**
+3. Details will get automatically filled, now click **Save**.
+4. Visit [Chainlist.org](https://chainlist.org/) for more info.
+<!-- 2. Search for and **copy a Chain ID** of your desired network.
 3. Return to MetaMask and click **"Add a custom network"**.
-4. Paste the **Chain ID** and complete the setup.
+4. Paste the **Chain ID** and complete the setup. -->
 
 ---
 
 ### 5. Get Test Ethereum (Sepolia Faucet)
-1. Go to [Google Cloud Web3 Faucet](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
+1. Go to [Google Cloud Web3 Faucet (Sepolia)](https://cloud.google.com/application/web3/faucet/ethereum/sepolia).
 2. **Copy your wallet address** from MetaMask.
 3. **Paste the address** in the faucet and request test ETH.
 
