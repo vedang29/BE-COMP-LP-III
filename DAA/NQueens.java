@@ -1,3 +1,5 @@
+// TC :  O(n * n!) 
+// SC :  O(n^2)
 import java.util.Scanner;
 
 public class NQueens {

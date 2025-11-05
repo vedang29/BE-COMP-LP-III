@@ -1,3 +1,6 @@
+// TC : O(n * cap)
+// SC : O(n * cap)
+
 import java.util.*;
 
 public class Knapsack01 {

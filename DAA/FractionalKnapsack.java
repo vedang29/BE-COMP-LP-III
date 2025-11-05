@@ -1,4 +1,7 @@
 // PROGRAM - 3
+// TC : O(n) + O(n log n) + O(n)  ⇒  O(n log n)
+// SC : O(n)   (because of items array)
+
 import java.util.*;
 
 public class FractionalKnapsack {

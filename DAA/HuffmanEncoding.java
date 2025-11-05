@@ -1,3 +1,10 @@
+/*
+    n = length of input text
+    u = number of unique characters
+    TC : O(n) + O(u log u) + O(u) + O(n) + O(n log u) = O(n log u)
+    SC : O(n + u) (or O(n log u) if counting encoded string in bits)
+
+*/
 import java.util.*;
 
 public class HuffmanEncoding {
